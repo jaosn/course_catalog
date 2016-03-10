@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 ruby '2.2.3'
 
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'autoprefixer-rails'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record
@@ -49,7 +52,7 @@ gem 'rails_12factor', group: :production
 gem 'sqlite3', group: :development
 gem 'pg', group: :production
 
-gem 'bootstrap-sass', '~> 3.3.6'
+
 
 gem 'json'
 gem 'pry-byebug'

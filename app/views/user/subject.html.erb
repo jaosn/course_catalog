@@ -1,26 +1,31 @@
+<div id = "container">
+  <div id = "content" class = "col-xs-9">
 
-<div id = "rightside">
-  <br>
-  <%= link_to "Home", user_home_path %><br>
-  <%= link_to "Course", user_instructor_path %><br>
-  <%= link_to "Instructor", user_instructor_path %><br>
-  <%= link_to "Logout", sessions_logout_path %><br><br>
+    <table>
+      <thread>
+        <tr>
+          <th>Name</th>
+          <th>abbreviation</th>
+        </tr>
+      </thread>
+      <tbody>
+        <% @subj = Subject.all%>
+        <% @subj.each do |s|%>
+          <tr>
+            <td><%=s.name%></td>
+            <td><%=s.abb%></td>
+          </tr>
+        <%end%>
+      </tbody>
+    </table>
+  </div>
+
+  <div id = "sidebar" class = "col-xs-3">
+    <br>
+    <%= link_to "Home", user_home_path %><br>
+    <%= link_to "Course", user_instructor_path %><br>
+    <%= link_to "Instructor", user_instructor_path %><br>
+    <%= link_to "Logout", sessions_logout_path %><br><br>
+  </div>
+
 </div>
-
-<table>
-  <thread>
-    <tr>
-      <th>Name</th>
-      <th>abbreviation</th>
-    </tr>
-  </thread>
-  <tbody>
-    <% @subj = Subject.all%>
-    <% @subj.each do |s|%>
-      <tr>
-        <td><%=s.name%></td>
-        <td><%=s.abb%></td>
-      </tr>
-    <%end%>
-  </tbody>
-</table>

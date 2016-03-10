@@ -1,17 +1,31 @@
-<h1>This is the User Homepage</h1>
-<% if session[:user_id]%>
-  <div id = "rightside">
-    <%= link_to "Logout", sessions_logout_path %><br>
-  </div>
-  <div>
-    This should be a profile page <br>
-    what should i put here?
-  </div>
-<% end %>
 
-<div id = "middleside">
-  <br>
-  <%= link_to "Courses", user_course_path %><br>
-  <%= link_to "Subject", user_subject_path %><br>
-  <%= link_to "Instructor", user_instructor_path %><br>
-</div>
+<body>
+
+
+  <div class="container">
+    <% if session[:user_id]%>
+      <div class="row" align="center">
+        <h1>This is the HomePage</h1><br>
+      </div>
+      <div class = "row">
+        <div id="content" class="col-xs-6">
+          This should be a profile page <br>
+          what should i put here? <br>
+
+        </div>
+        <div id = "middle link" class="col-xs-3">
+          <p>Here are the links</p>
+          <%= link_to "Courses", user_course_path %><br>
+          <%= link_to "Subject", user_subject_path %><br>
+          <%= link_to "Instructor", user_instructor_path %><br>
+        </div>
+        <div id="sidebar" class="col-xs-3" >
+          <%= link_to "Logout", sessions_logout_path %>
+        </div>
+      </div>
+
+    <% end %>
+
+
+  </div>
+<body>
