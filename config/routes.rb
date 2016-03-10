@@ -1,4 +1,22 @@
 Rails.application.routes.draw do
+  get 'sessions/login'
+
+  get 'sessions/register'
+
+  post 'sessions/register'
+
+  get 'sessions/logout'
+
+  root 'user#home'
+
+  get 'user/home'
+
+  get 'user/subject'
+
+  get 'user/course'
+
+  get 'user/instructor'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,23 @@
+<h1>Sessions#register</h1>
+<p>Find me in app/views/sessions/register.html.erb</p>
+
+<div>
+  <% if @error %>
+    <%= @error %>
+  <% end %>
+</div>
+<div align = center>
+  <%= form_tag("register", method: "post") do %>
+    <%= label_tag(:q_username, "Username")%>
+    <%= text_field_tag(:username) %><br>
+    <%= label_tag(:q_password, "Password")%>
+    <%= password_field_tag(:password) %><br>
+    <%= label_tag(:q_confirm, "Confirm")%>
+    <%= password_field_tag(:confirm) %><br>
+    <%= label_tag(:q_email, "Email")%>
+    <%= text_field_tag(:email) %><br>
+
+    <%= submit_tag "Canel", name: 'register_cancel_button'%>
+    <%= submit_tag "Register", name: 'register_register_button'%>
+    <% end %>
+</div>

@@ -1,0 +1,30 @@
+
+<div id = "rightside">
+  <br>
+  <%= link_to "Home", user_home_path %><br>
+  <%= link_to "Course", user_instructor_path %><br>
+  <%= link_to "Subject", user_subject_path %><br>
+  <%= link_to "Logout", sessions_logout_path %><br><br>
+</div>
+
+<table>
+  <thread>
+    <tr>
+      <th>First</th>
+      <th>Middle</th>
+      <th>Last</th>
+      <th>Email</th>
+    </tr>
+  </thread>
+  <tbody>
+    <% @inst = Instructor.all%>
+    <% @inst.each do |s|%>
+      <tr>
+        <td><%=s.first%></td>
+        <td><%=s.middle%></td>
+        <td><%=s.last%></td>
+        <td><%=s.email%></td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>

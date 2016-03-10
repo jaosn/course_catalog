@@ -48,3 +48,8 @@ end
 gem 'rails_12factor', group: :production
 gem 'sqlite3', group: :development
 gem 'pg', group: :production
+
+gem 'bootstrap-sass', '~> 3.3.6'
+
+gem 'json'
+gem 'pry-byebug'
