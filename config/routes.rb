@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   get 'user/instructor'
 
+  get 'user/search'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

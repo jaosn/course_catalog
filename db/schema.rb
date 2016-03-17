@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160309234527) do
+ActiveRecord::Schema.define(version: 20160317222900) do
 
   create_table "courses", force: :cascade do |t|
     t.string   "name"
@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(version: 20160309234527) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "enrollments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "course_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "enrollments", ["course_id"], name: "index_enrollments_on_course_id"
+  add_index "enrollments", ["user_id"], name: "index_enrollments_on_user_id"
+
   create_table "instructors", force: :cascade do |t|
     t.string   "last"
     t.string   "first"
@@ -31,11 +41,21 @@ ActiveRecord::Schema.define(version: 20160309234527) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "relations", force: :cascade do |t|
+    t.integer  "course_id"
+    t.string   "subject_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "relations", ["course_id"], name: "index_relations_on_course_id"
+
   create_table "subjects", force: :cascade do |t|
     t.text     "name"
     t.string   "abb"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "latte_id"
   end
 
   create_table "users", force: :cascade do |t|

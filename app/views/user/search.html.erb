@@ -1,0 +1,30 @@
+
+
+
+
+<div id = "container">
+
+  <div class = "row">
+    <div id="content" class="col-xs-9" >
+      <div class = "row" align = "center">
+        <h3 >Here is the search box</h3>
+        <%= form_tag("search", method: "get")  do %>
+          <%= text_field_tag :terms %>
+          <%= select_tag "search_subject",options_from_collection_for_select(Subject.order(:name).all,:id,:name) %>
+          <%= submit_tag "Search", name: 'search_search_button', class: "btn btn-primary" %>
+        <% end %>
+
+      </div>
+      <div class = "row">
+      </div>
+    </div>
+    <div id="sidebar" class="col-xs-3">
+      <br>
+      <%= link_to "Home", user_home_path %><br>
+      <%= link_to "Subject", user_subject_path %><br>
+      <%= link_to "Instructor", user_instructor_path %><br>
+      <%= link_to "Course", user_course_path %><br>
+      <%= link_to "Logout", sessions_logout_path %><br><br>
+    </div>
+  </div>
+</div>

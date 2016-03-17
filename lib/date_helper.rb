@@ -24,3 +24,10 @@ class SubjectHelper
     @data_hash = JSON.parse(file)
   end
 end
+
+# courses = CourseHelper.new.data_hash
+# instructors = InstructorHelper.new.data_hash
+# subjects = SubjectHelper.new.data_hash
+#
+# binding.pry
+# puts "YES"

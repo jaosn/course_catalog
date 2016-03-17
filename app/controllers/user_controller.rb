@@ -1,3 +1,5 @@
+require "pry-byebug"
+
 class UserController < ApplicationController
   before_action :require_login
   def home
@@ -10,6 +12,15 @@ class UserController < ApplicationController
   end
 
   def instructor
+  end
+
+  def search
+    @subjects= Subject.all
+    binding.pry
+    if params[:search_search_button] && params[:search_subject] == "English"
+      redirect_to user_home_path
+
+    end
   end
 
   private
