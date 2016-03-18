@@ -24,6 +24,29 @@
           <%= link_to "Logout", sessions_logout_path %>
         </div>
       </div>
+      <div class = "row">
+        <h5>Here are the course you registered!</h5><br>
+        <table class = 'table'>
+          <thread>
+            <tr>
+              <th>Name</th>
+              <th>Code</th>
+              <th>Requirement</th>
+              <th>Description</th>
+            </tr>
+          </thread>
+          <tbody>
+            <% @enrolls.each do |s|%>
+              <tr>
+                <td><%=s.name%></td>
+                <td><%=s.code%></td>
+                <td><%=s.requirement%></td>
+                <td><%=s.description%></td>
+              </tr>
+            <%end%>
+          </tbody>
+        </table>
+      </div>
 
     <% end %>
 

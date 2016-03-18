@@ -13,6 +13,7 @@ Course.delete_all
 Instructor.delete_all
 Subject.delete_all
 Relation.delete_all
+Enrollment.delete_all
 
 courses = CourseHelper.new.data_hash
 instructors = InstructorHelper.new.data_hash
@@ -36,6 +37,8 @@ end
 
 puts "instructor done"
 
+
+Subject.new.save
 subjects.each do |s|
   Subject.new(name: s["name"], abb: s["abbreviation"], latte_id: s["id"]).save
 end

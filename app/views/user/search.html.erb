@@ -1,24 +1,49 @@
 
-
-
-
 <div id = "container">
 
   <div class = "row">
-    <div id="content" class="col-xs-9" >
+    <div id="content" class="col-xs-10" >
       <div class = "row" align = "center">
         <h3 >Here is the search box</h3>
         <%= form_tag("search", method: "get")  do %>
           <%= text_field_tag :terms %>
-          <%= select_tag "search_subject",options_from_collection_for_select(Subject.order(:name).all,:id,:name) %>
+          <%= select_tag "search_subject",options_from_collection_for_select(Subject.order(:name).all,:name,:name) %>
           <%= submit_tag "Search", name: 'search_search_button', class: "btn btn-primary" %>
         <% end %>
 
       </div>
-      <div class = "row">
+      <div class = "row" align = "center">
+        <% if @results %>
+          <table class = 'table'>
+            <thread>
+              <tr>
+                <th>Name</th>
+                <th>Code</th>
+                <th>Requirement</th>
+                <th>Description</th>
+                <th>Register</th>
+              </tr>
+            </thread>
+            <tbody>
+              <% @results.each do |s|%>
+                <tr>
+                  <td><%=s.name%></td>
+                  <td><%=s.code%></td>
+                  <td><%=s.requirement%></td>
+                  <td><%=s.description%></td>
+                  <% if !registered?(s.id)%>
+                    <td><%= button_to 'Enroll',{:controller=>"user",:action=>"registration",:registration_course_id=>s.id},:method=>:post%></td>
+                  <%else%>
+                  <td>Registered</td>
+                  <%end%>
+                </tr>
+              <%end%>
+            </tbody>
+          </table>
+        <%end%>
       </div>
     </div>
-    <div id="sidebar" class="col-xs-3">
+    <div id="sidebar" class="col-xs-2">
       <br>
       <%= link_to "Home", user_home_path %><br>
       <%= link_to "Subject", user_subject_path %><br>
