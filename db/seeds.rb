@@ -14,6 +14,9 @@ Instructor.delete_all
 Subject.delete_all
 Relation.delete_all
 Enrollment.delete_all
+User.delete_all
+
+User.new(username: "hanzhenyu",password: "1",email:"han@han.com").save
 
 courses = CourseHelper.new.data_hash
 instructors = InstructorHelper.new.data_hash
@@ -25,7 +28,7 @@ courses.each do |single|
   c = Course.new(name: single['name'],description: single["description"],code: single["code"],requirement: act)
   c.save
   single["subjects"].each do |s|
-    c.relations.create(subject_id: s["id"])
+    c.relations.new(subject_id: s["id"]).save
   end
 end
 
@@ -38,7 +41,7 @@ end
 puts "instructor done"
 
 
-Subject.new.save
+Subject.new(name:"",abb:"sample").save
 subjects.each do |s|
   Subject.new(name: s["name"], abb: s["abbreviation"], latte_id: s["id"]).save
 end
