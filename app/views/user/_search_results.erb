@@ -1,0 +1,6 @@
+<% if @results %>
+  <p><%= @results.length %> matches found</p>
+  <%= render "index" %>
+<% else %>
+  <p>No match found!</p>
+<%end%>

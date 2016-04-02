@@ -1,3 +1,5 @@
+require "pry-byebug"
+
 class UserController < ApplicationController
   before_action :require_login
 
@@ -22,10 +24,14 @@ class UserController < ApplicationController
   end
 
   def search
+  end
+
+  def do_search
     subjects= Subject.all
     if params[:search_search_button]
       if params[:search_subject] == ""
         @results = Course.search(params[:terms])
+        #binding.pry
       else
         @results = []
         latte_id = Subject.search(params[:search_subject])[0].latte_id
@@ -38,11 +44,14 @@ class UserController < ApplicationController
         end
       end
     end
+    respond_to do |format|
+      format.js
+    end
   end
 
   def registration
     Enrollment.new(user_id: session[:user_id], course_id: params[:registration_course_id]).save
-    redirect_to user_home_path
+    render :js => "window.location = 'home'"
   end
 
   private
