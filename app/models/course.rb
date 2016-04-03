@@ -4,10 +4,6 @@ class Course < ActiveRecord::Base
   has_many :users, through: :enrollments
 
   def self.search(query)
-    if query
-      where("name like ?", "%#{query}%")
-    else
-      scoped
-    end
+    where("name like ?", "%#{query}%")
   end
 end

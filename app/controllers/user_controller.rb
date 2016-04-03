@@ -31,16 +31,18 @@ class UserController < ApplicationController
 
   def do_search
     subjects= Subject.all
-    if params[:search_subject] == ""
-      @results = Course.search(params[:terms])
-      #binding.pry
-    else
-      @results = []
-      latte_id = Subject.search(params[:search_subject])[0].latte_id
-      Course.search(params[:terms]).each do |c|
-        c.relations.each do |cc|
-          if cc.subject_id == latte_id
-            @results << c
+    if params[:terms]
+      if params[:search_subject] == ""
+        @results = Course.search(params[:terms])
+        #binding.pry
+      else
+        @results = []
+        latte_id = Subject.search(params[:search_subject])[0].latte_id
+        Course.search(params[:terms]).each do |c|
+          c.relations.each do |cc|
+            if cc.subject_id == latte_id
+              @results << c
+            end
           end
         end
       end

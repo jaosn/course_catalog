@@ -55,3 +55,4 @@ gem 'pg', group: :production
 gem 'will_paginate', '~> 3.0.6'
 gem 'json'
 gem 'pry-byebug'
+gem 'jquery-turbolinks'
