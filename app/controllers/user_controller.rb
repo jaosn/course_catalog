@@ -15,12 +15,15 @@ class UserController < ApplicationController
   end
 
   def subject
+    @subj = Subject.paginate(:page => params[:page],:per_page => 10)
   end
 
   def course
+    @courses = Course.paginate(:page => params[:page],:per_page => 10)
   end
 
   def instructor
+    @inst = Instructor.paginate(:page => params[:page],:per_page => 10)
   end
 
   def search
@@ -28,25 +31,23 @@ class UserController < ApplicationController
 
   def do_search
     subjects= Subject.all
-    if params[:search_search_button]
-      if params[:search_subject] == ""
-        @results = Course.search(params[:terms])
-        #binding.pry
-      else
-        @results = []
-        latte_id = Subject.search(params[:search_subject])[0].latte_id
-        Course.search(params[:terms]).each do |c|
-          c.relations.each do |cc|
-            if cc.subject_id == latte_id
-              @results << c
-            end
+    if params[:search_subject] == ""
+      @results = Course.search(params[:terms])
+      #binding.pry
+    else
+      @results = []
+      latte_id = Subject.search(params[:search_subject])[0].latte_id
+      Course.search(params[:terms]).each do |c|
+        c.relations.each do |cc|
+          if cc.subject_id == latte_id
+            @results << c
           end
         end
       end
     end
-    respond_to do |format|
-      format.js
-    end
+    #@results = @resultsp.paginate(:page => params[:page],:per_page => 10)
+    #binding.pry
+
   end
 
   def registration

@@ -1,14 +1,14 @@
 
 <div id = "container">
-
   <div class = "row">
     <div id="content" class="col-xs-10" >
       <div class = "row" align = "center">
         <h3 >Here is the search box! Case Sensitive!!!</h3>
         <%= form_tag("do_search", method: "get", remote: true, id:"search_form")  do %>
-          <%= text_field_tag :terms %>
-          <%= select_tag "search_subject",options_from_collection_for_select(Subject.order(:name).all,:name,:name) %>
-          <%= submit_tag "Search", name: 'search_search_button', class: "btn btn-primary" %>
+          <p>
+            <%= text_field_tag :terms %>
+            <%= select_tag "search_subject",options_from_collection_for_select(Subject.order(:name).all,:name,:name) %>
+          </p>
         <% end %>
       </div>
 

@@ -15,3 +15,16 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+$(function(){
+  var countText = 0;
+  $("#search_form input").keyup(function(){
+    $.get($("#search_form").attr("action"),$("#search_form").serialize(),null,"script");
+    countText ++;
+    console.log("Input changes made" + countText);
+    return false;
+  });
+  $("#search_subject").change(function(){
+    $.get($("#search_form").attr("action"),$("#search_form").serialize(),null,"script");
+    return false;
+  });
+});

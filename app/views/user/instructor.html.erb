@@ -11,7 +11,6 @@
         </tr>
       </thread>
       <tbody>
-        <% @inst = Instructor.all%>
         <% @inst.each do |s|%>
           <tr>
             <td><%=s.first%></td>
@@ -22,6 +21,7 @@
         <%end%>
       </tbody>
     </table>
+    <%= will_paginate @inst %>
   </div>
 
   <div id = "sidebar" class= "col-xs-3">

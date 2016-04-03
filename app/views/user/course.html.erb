@@ -13,7 +13,6 @@
           </tr>
         </thread>
         <tbody>
-          <% @courses = Course.all%>
           <% @courses.each do |s|%>
             <tr>
               <td><%=s.name%></td>
@@ -24,6 +23,7 @@
           <%end%>
         </tbody>
       </table>
+      <%= will_paginate @courses %>
     </div>
     <div id="sidebar" class="col-xs-3">
       <br>
